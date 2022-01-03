@@ -48,14 +48,17 @@ class Application():
         '''菜单'''
         print("\n{}\n".format(datetime.datetime.now().strftime("%Y/%m/%d %H:%M:%S")))
         print(APP_TITILE)
-        print("1.单元测验")
-        print("2.乱序测验")
-        print("S.导出错题+收藏（一般不使用，退出会保存）")
+        print("1.正序单元测验")
+        print("2.乱序单元测验")
+        print("3.乱序全库测验")
+        print("S.导出错题+收藏（一般不使用，退出会自动保存）")
         print("Others:Exit")
         op = self.user_input()
         if op == '1':
             self.test_unit()
         elif op == '2':
+            self.test_unit(_random=True)
+        elif op == '3':
             self.test_random()
         elif op == 'S':
             self.save()
@@ -97,8 +100,8 @@ class Application():
         else:
             print("当前没有收藏题")
 
-    def test_unit(self):
-        '''单元检测'''
+    def test_unit(self,_random=False):
+        '''单元检测（通过修改参数可以乱序测试）'''
         while True:
             print("--------请选择测试单元序号--------")
             cnt = ord('A')
@@ -117,7 +120,9 @@ class Application():
                         qsum = len(quetions)
                         asum = 1
                         cnt_right = 0
-                        for q in quetions:
+                        questionS = quetions[:]
+                        if _random : shuffle(questionS)
+                        for q in questionS:
                             ratio_right = 0.0
                             if asum > 1:
                                 ratio_right = cnt_right*100/(asum-1)

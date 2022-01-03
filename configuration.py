@@ -10,7 +10,7 @@ APP_OPT_SAVE_MARKDOWN = True #是否额外生成Markdown错题集
 FILE_PATH = r'./resource/Mayuan单选.txt'# 题库文件目录
 FILE_CODER = "UTF-8"# 文件编码类型（可以改用chardet库自动推测优化）
 
-HASH = hashlib.md5()# 文件ID生成方法（不建议修改）
+HASH = hashlib.md5()# 题目ID生成方法（不建议修改）
 
 class Pattern():
     '''

@@ -1,9 +1,12 @@
-# Title:  马原期末复习题库
+# Title:  AutoTEST
 ## Author: Frozen (https://github.com/AlterFrozen)
 ## Date:   2022/1/1
-## Intro:  本题库包含期末重点考察章节的选择题
+## Intro:  默认包含马原期末复习题库重点考察章节的选择题，通过修改FILE_PATH和configuration.py可以用于其他用途
 
 # Guidance:
+
+- **main.py为程序入口**
+
 - 更换题库请修改configuration.py中的FILE_PATH（其他FILE属性可以不修改）
 - 导出的错题集可以直接作为新的题库，只需要在主菜单选择“错题集”功能即可（暂未上线，但是可以通过修改FILE_PATH实现）
 - 如果需要修改功能：一般情况下只需要修改configuration.py(要通过模块的单元测试)以及core.py中的parser方法即可
