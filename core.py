@@ -51,7 +51,7 @@ class Application():
         print("1.正序单元测验")
         print("2.乱序单元测验")
         print("3.乱序全库测验")
-        print("S.导出错题+收藏（一般不使用，退出会自动保存）")
+        print("A.导出错题+收藏（保存后会清空内存记录）")
         print("Others:Exit")
         op = self.user_input()
         if op == '1':
@@ -60,7 +60,7 @@ class Application():
             self.test_unit(_random=True)
         elif op == '3':
             self.test_random()
-        elif op == 'S':
+        elif op == 'A':
             self.save()
         else: self.running = False
 
@@ -99,6 +99,8 @@ class Application():
             fp_f.close()
         else:
             print("当前没有收藏题")
+        self.Qerror.clear()
+        self.Qfavorites.clear()
 
     def test_unit(self,_random=False):
         '''单元检测（通过修改参数可以乱序测试）'''
@@ -108,10 +110,12 @@ class Application():
             for chapter,quetions in self.Qlibrary.items():
                 print("({}):{}题目数量:{}".format(chr(cnt),chapter,len(quetions)))
                 cnt += 1
-            op = self.user_input()[0]
+            print("[Others:Exit]")
+            op = self.user_input().upper()
+            if op: op=op[0]
             if  not 'A'<=op<chr(cnt):
-                print(">>[ERROR:错误的序号]")
-                continue
+                print(">>[退出或序号超出范围]")
+                break
             else:
                 op = ord(op)-ord('A')
                 cnt = 0

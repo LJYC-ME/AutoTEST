@@ -29,6 +29,7 @@ class Problem():
         '''格式化地提问该问题并等待用户作答，默认作答后立即显示答案，返回值为作答是否正确'''
         print("[ID:{}]\n{}\n{}".format(self.ID,self.question,self.options))
         ans = input(prompt.INPUT).strip()
+        ans = ''.join(sorted(ans))
         if re.match(r".*"+ans,self.answer,re.IGNORECASE):#忽略大小写
             ans = True
             print(prompt.OUTPUT_RIGHT)
